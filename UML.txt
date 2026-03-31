@@ -1,0 +1,23 @@
+Node Class: Represents a point in the graph.
+
+    + g_score: double (cost from start)
+    + h_score: double (estimated cost to goal)
+    + f_score: double (total estimated cost, g + h)
+    + parent: Node (reference to the predecessor node for path reconstruction)
+    + calculate_f_score(): method to compute the total score.
+
+AStarPathfinder Class: Contains the core logic of the algorithm.
+
+    + find_path(start_node, goal_node): List<Node>: the main method to execute the search.
+    + heuristic(node1, node2): double: a method for calculating the estimated distance (e.g., straight-line distance, Manhattan distance).
+    + reconstruct_path(current_node): List<Node>: a helper method to build the final path once the goal is reached.
+
+PriorityQueue / OpenSet Class: A data structure to manage nodes to be explored, prioritized by their f_score.
+
+    + add(node)
+    + remove_lowest_f_score()
+
+ClosedSet Class: A collection to keep track of visited nodes.
+
+    + add(node)
+    + contains(node) 
