@@ -57,5 +57,24 @@ void OpenSet<T>::add(T* data){
     this->max = this->max * 2;
   }
 
+  //Putting the data in the available spot in the heap.
+  this->oset[this->arrSize] = data;
+  
+  //Heapifying loop, using min-heap logic.
+  int i = this->arrSize;
+  while(true){
+    //Check parent.
+    if(data->getFVal() < this->oset[(i - 1) / 2].getFVal()){
+      T* temp = this->oset[(i - 1) / 2];
+      this->oset[(i - 1) / 2] = data;
+      this->oset[i] = temp;
+      i = (i - 1) / 2;
+    }
+    //If we are here the data is in the right spot.
+    else{
+      break;
+    }
+  }
+  
   this->arrSize++;
 }
